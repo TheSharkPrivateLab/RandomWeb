@@ -1,0 +1,26 @@
+body {
+  text-align : center;
+  background-color: black;
+  color: white;
+  font-family:'Comic Sans MS';
+}
+
+#left-div, #middle-div, #right-div {
+    display:inline-block;
+    width: 33%;
+    height:500px;
+    vertical-align:text-top;
+}
+
+#answer {
+    width:100%;
+    margin:auto;
+}
+
+#answer-image {
+    width:100%;
+}
+
+#answer-text {
+    font-size:30px;
+}

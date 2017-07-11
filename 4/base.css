@@ -1,0 +1,44 @@
+body {
+  text-align : center;
+  font-family: Arial; 
+}
+
+.Loz {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color : burlywood;
+}
+
+.redSquare, .blueSquare, .greenSquare, .violetSquare, .whiteSquare {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+}
+
+.redSquare {
+    background-color: red;
+}
+
+.blueSquare {
+    background-color: dodgerblue;
+}
+
+.greenSquare {
+    background-color: forestgreen;
+}
+
+.violetSquare {
+    background-color: purple;
+}
+
+.whiteSquare {
+    background-color: whitesmoke;
+}
+
+.tile {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}

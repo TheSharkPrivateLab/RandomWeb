@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#heroChoiceButton").click(function () {
+                var hero = $("#heroChoice").val();
+                console.log(hero);
+                var player = new Player(hero);
+                console.log(player);
+                initGame(player);
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        Choississez votre héros : 
+        <select id="heroChoice">
+            <option value="Ignifius">Ignifius</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Gaïa">Gaïa</option>
+        </select>
+        <button type="button" id="heroChoiceButton">Valider</button>
+    </form>
+</body>
+</html>

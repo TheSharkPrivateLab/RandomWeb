@@ -1,0 +1,58 @@
+body {
+  text-align : center;
+  font-family: Arial; 
+}
+
+#title-div {
+  border: 1px dashed black;
+  padding: 10px;
+  width : 20%;
+  margin : auto;
+  margin-bottom: 20px;
+}
+
+.add-div {
+  border: 1px dashed black;
+  padding: 20px;
+  margin-bottom: 1px;
+}
+
+.add-div-div {
+  display: inline-block;
+  margin : 0 5px 0 5px;
+}
+
+.type-result-div {
+    margin-top: 20px;
+}
+
+.type-result-div-div {
+    display: inline-block;
+    margin : 5px;
+}
+
+#testType {
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+#testType:hover {
+    font-size : 17px;
+}
+
+#immunities h4 {
+    font-weight : bold;
+}
+
+#weaknesses h4 {
+    color : red;
+}
+
+#resistances h4 {
+    color : green;
+}
+
+#pokemonTeam {
+    width:50%;
+    height:300px;
+}

@@ -1,0 +1,205 @@
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#testType").click(function () {
+                $("#immunities").html("<h4>Immunités</h4>");
+                $("#weaknesses").html("<h4>Faiblesses</h4>");
+                $("#resistances").html("<h4>Résistances</h4>");
+                var primary = $("#primary-type").val();
+                var secondary = $("#secondary-type").val();
+                if (primary == secondary)
+                    secondary = "Aucun";
+                var res = new Object();
+                res = def_res(res);
+
+                $("#showPrincipal").html(primary + " / ");
+                $("#showSecondary").html(secondary);
+                res = calc_res(res, primary);
+                if (secondary != "Aucun") {
+                    res = calc_res(res, secondary);
+                }
+                write_res(res);
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--<section id="title-div">
+        <h1>My Pokedex</h1>
+        <button id="import">Importer</button>
+        <button id="export">Exporter</button>
+        <button id="save">Sauvegarder (cookies)</button>
+    </section>
+    <form>
+        <section class="add-div" id="generalInformations">
+            <section class="add-div-div" id="add-name-div">
+                <span>Nom : </span><input>
+            </section>
+            <section class="add-div-div" id="add-img-div">
+                <span>Image : </span><input type="file">
+            </section>
+            <section class="add-div-div" id="add-desc-div">
+                <span>Description du Pokédex : </span><textarea></textarea>
+            </section>
+        </section>-->
+        <section class="add-div" id="pokemonType">
+            <section class="add-div-div" id="add-prim-type-div">
+                <span>Type principal : </span>
+                <select id="primary-type">
+                    <option value="Acier">Acier</option>
+                    <option value="Combat">Combat</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Eau">Eau</option>
+                    <option value="Electrik">Electrik</option>
+                    <option value="Fée">Fée</option>
+                    <option value="Feu">Feu</option>
+                    <option value="Glace">Glace</option>
+                    <option value="Insecte">Insecte</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Plante">Plante</option>
+                    <option value="Poison">Poison</option>
+                    <option value="Psy">Psy</option>
+                    <option value="Roche">Roche</option>
+                    <option value="Sol">Sol</option>
+                    <option value="Spectre">Spectre</option>
+                    <option value="Ténèbres">Ténèbres</option>
+                    <option value="Vol">Vol</option>
+                </select>
+            </section>
+            <section class="add-div-div" id="add-sec-type-div">
+                <span>Type secondaire : </span>
+                <select id="secondary-type">
+                    <option value="Aucun">Aucun</option>
+                    <option value="Acier">Acier</option>
+                    <option value="Combat">Combat</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Eau">Eau</option>
+                    <option value="Electrik">Electrik</option>
+                    <option value="Fée">Fée</option>
+                    <option value="Feu">Feu</option>
+                    <option value="Glace">Glace</option>
+                    <option value="Insecte">Insecte</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Plante">Plante</option>
+                    <option value="Poison">Poison</option>
+                    <option value="Psy">Psy</option>
+                    <option value="Roche">Roche</option>
+                    <option value="Sol">Sol</option>
+                    <option value="Spectre">Spectre</option>
+                    <option value="Ténèbres">Ténèbres</option>
+                    <option value="Vol">Vol</option>
+                </select>
+            </section>
+            <section class="type-result-div">
+                <span id="testType">Effectuer un test de résistance</span></>
+                <p>Résultats : <span id="showPrincipal"></span><span id="showSecondary"></span></p>
+                <section id="typeResults">
+                    <p id="immunities"></p>
+                    <p id="resistances"></p>
+                    <p id="weaknesses"></p>
+                </section>
+            </section>
+        </section>
+        <!--<section id="pokemonFamily" class="add-div">
+            <section class="add-div-div" id="add-name-div">
+                <section class="add-div-div" id="add-family-div">
+                    <span>Famille : </span><input>
+                </section>
+                <section class="add-div-div" id="add-egg-div">
+                    <span>Groupe d'oeuf : </span><input>
+                </section>
+                <section class="add-div-div" id="add-birth-foot-div">
+                    <span>Nombre de pas : </span><input />
+                </section>
+                <section class="add-div-div" id="add-gender-div">
+                    <span>Genre : </span>
+                    <input type="radio" name="gender" id="no-gender" value="no-gender"/> No
+                    <input type="radio" name="gender" id="yes-gender" value="yes-gender" /> Yes
+                </section>
+            </section>
+        </section>
+        <section id="pokemonMorphology" class="add-div">
+            <section class="add-div-div" id="add-birth-foot-div">
+                <span>Taille (m) : </span><input />
+            </section>
+            <section class="add-div-div" id="add-birth-foot-div">
+                <span>Poids (kg) : </span><input />
+            </section>
+            <section class="add-div-div" id="add-body-img-div">
+                <span>Corps : </span><input type="file">
+            </section>
+            <section class="add-div-div" id="add-footprint-div">
+                <span>Empreinte : </span><input type="file">
+            </section>
+        </section>
+        <section id="pokemonLevel" class="add-div">
+            <section class="add-div-div" id="add-birth-foot-div">
+                <span>Points d'efforts : </span><input />
+                <select name="stats">
+                    <option value="pv">PV</option>
+                    <option value="atk">ATK</option>
+                    <option value="satk">SATK</option>
+                    <option value="def">DEF</option>
+                    <option value="sdef">SDEF</option>
+                    <option value="spe">SPE</option>
+                </select>
+            </section>
+            <section class="add-div-div" id="add-birth-foot-div">
+                <span>Expérience : </span><input />
+            </section>
+            <section class="add-div-div" id="add-body-img-div">
+                <span>Expérience au niveau 100 : </span><input/>
+            </section>
+        </section>
+        <section id="pokemonTalents" class="add-div">
+            <section class="add-div-div" id="add-first-talent-div">
+                <span>Talent n°1 : </span><input list="talent-1"/>
+                <datalist id="talent-1">
+                    <option value="Thick Fat">Isograisse</option>
+                    <option value="Bullet Proof">Pare-Balles</option>
+                    <option value="Intimidate">Intimidation</option>
+                </datalist>
+            </section>
+            <section class="add-div-div" id="add-second-talent-div">
+                <span>Talent n°2 : </span><input list="talent-2"/>
+                <datalist id="talent-2">
+                    <option value="Thick Fat">Isograisse</option>
+                    <option value="Bullet Proof">Pare-Balles</option>
+                    <option value="Intimidate">Intimidation</option>
+                </datalist>
+            </section>
+            <section class="add-div-div" id="add-secret-talent-div">
+                <span>Talent Secret : </span><input list="talent-secret"/>
+                <datalist id="talent-secret">
+                    <option value="Thick Fat">Isograisse</option>
+                    <option value="Bullet Proof">Pare-Balles</option>
+                    <option value="Intimidate">Intimidation</option>
+                </datalist>
+            </section>
+        </section>
+        <section id="pokemonPokedex" class="add-div">
+            <section class="add-div-div" id="add-id-div">
+                <span>Numéro Pokédex : </span><input>
+            </section>
+            <section class="add-div-div" id="add-id-div">
+                <span>Couleur Pokédex : </span><input list="colors">
+                <datalist id="colors">
+                    <option value="Black">Noir</option>
+                    <option value="White">Blanc</option>
+                    <option value="Red">Rouge</option>
+                </datalist>
+            </section>
+            <section class="add-div-div" id="add-id-div">
+                <span>Taux de capture : </span><input>
+            </section>
+        </section>
+        <br />
+        <input type="submit" />
+    </form>-->
+</body>
+</html>

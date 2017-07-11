@@ -1,0 +1,14 @@
+body {
+  text-align : center;
+  font-family: Arial; 
+}
+
+.divBuyUpgrade {
+    text-align: right;
+    margin: 20px;
+}
+
+.divBuyUpgrade button {
+    width : 120px;
+    height : 100px;
+}

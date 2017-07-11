@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            var P1 = new player("Dummy", 0, 1, 0);
+            var poem = new shopItem("poem", 100, 1, 0);
+            var mathExercise = new shopItem("mathExercise", 1000, 5, 0);
+            var sport = new shopItem("sport", 5000, 20, 0);
+            var shopArr = [
+                poem,
+                mathExercise,
+                sport
+            ];
+            $("#nickname").html(P1.nick);
+            window.setInterval(function () {
+                dps(P1);
+            }, 1000);
+            $("#addScore").click(function () {
+                click(P1)
+            });
+            $(".buyUpgrade").click(function () {
+                buySomething(P1, this.id, shopArr);
+            });
+            $("#cheat").click(function () {
+                clickCheat(P1)
+            });
+        });
+    </script>
+</head>
+<body>
+    <p id="nickname"></p>
+    <button id="addScore">Click</button>
+    <p id="score"></p>
+    <button id="cheat">(100 de connaissance)</button>
+    <section class="divBuyUpgrade">
+        <button class="buyUpgrade" id="get-poem">Réciter une poésie (<span id="cost-poem">100</span> de connaissance)</button>
+    </section>
+    <section class="divBuyUpgrade">
+        <button class="buyUpgrade" id="get-mathExercise">Faire un exercice de maths (<span id="cost-mathExercise">1000</span> de connaissance)</button>
+    </section>
+    <section class="divBuyUpgrade">
+        <button class="buyUpgrade" id="get-sport">Faire un tour de terrain (<span id="cost-sport">5000</span> de connaissance)</button>
+    </section>
+</body>
+</html>
