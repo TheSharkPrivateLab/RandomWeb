@@ -1,0 +1,17 @@
+﻿<html>
+<head>
+    <title>Index</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var min = Math.ceil(1);
+            var max = Math.floor(9);
+            var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+            window.location.href = rand + "/index.html";
+        });
+    </script>
+</head>
+    <body>
+    </body>
+</html>

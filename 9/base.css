@@ -1,10 +1,40 @@
 body {
   text-align : center;
-  font-family: Arial; 
+  font-family: 'Comic Sans MS';
+  margin-left:20%;
+  margin-right:20%;
 }
 
 .div {
     margin: 5px;
     width:100px;
+    height:100px;
     display:inline-flex;
+    border: 5px solid black;
+}
+
+#money {
+    margin:10px;
+}
+
+.div img {
+    width: 20px;
+    height: 20px;
+}
+
+.sellPotatoe {
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    display: inline-flex;
+}
+
+.sellPotatoe:hover {
+    text-decoration:underline;
+}
+
+#vegetables {
+    margin-top:20px;
 }
