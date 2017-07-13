@@ -6,8 +6,27 @@
     <script src="script.js"></script>
     <script>
         $(document).ready(function () {
-            var player = Player();
+            var player = new Player();
             print(player);
+            init(player);
+            $("body").keypress(function (event) {
+                switch (event.key) {
+                    case "z":
+                        mv(player, event.key);
+                        break;
+                    case "q":
+                        mv(player, event.key);
+                        break;
+                    case "s":
+                        mv(player, event.key);
+                        break;
+                    case "d":;
+                        mv(player, event.key);
+                        break;
+                    default:
+                        print("Error");
+                }
+            });
         });
     </script>
 </head>
