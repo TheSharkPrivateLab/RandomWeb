@@ -19,3 +19,13 @@
     background-image: url("trophee.jpg");
     background-size: 50px 50px;
 }
+
+.sword {
+    background-image: url("swords.png");
+    background-size: 50px 50px;
+}
+
+.trap {
+    background-image: url("trap.png");
+    background-size: 50px 50px;
+}

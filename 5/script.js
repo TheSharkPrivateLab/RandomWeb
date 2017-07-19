@@ -276,13 +276,13 @@ function display() {
         if (pokemon.types.length == 1) {
             $("#display").html($("#display").html() + '<p>' + pokemon.types[0].type.name + '</p>');
             $("#display").html($("#display").html() + '</section>');
-            calc(results = [pokemon.types[0].type.name]);
+            print(calc_res([pokemon.types[0].type.name]));
         }
         else {
             $("#display").html($("#display").html() + '<p>' + pokemon.types[0].type.name);
             $("#display").html($("#display").html() + pokemon.types[1].type.name + '</p>');
             $("#display").html($("#display").html() + '</section>');
-            calc(results = [pokemon.types[0].type.name, pokemon.types[1].type.name]);
+            print(calc_res([pokemon.types[0].type.name, pokemon.types[1].type.name]));
         }
     });
 }

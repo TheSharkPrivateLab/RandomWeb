@@ -1,0 +1,113 @@
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                var mate1 = $("#mate1");
+                var mate2 = $("#mate2");
+                var mate3 = $("#mate3");
+                var mate4 = $("#mate4");
+                var weak = "Your team is weak against ";
+                var strWeak = "";
+                var weakRogue = 0;
+                var weakMage = 0;
+                var weakWarrior = 0;
+                var team = [mate1[0].value, mate2[0].value, mate3[0].value, mate4[0].value];
+                print(team);
+
+                team.forEach(function (mate) {
+                    switch (mate) {
+                        case "Warrior":
+                            weakMage++;
+                            weakRogue--;
+                            break;
+                        case "Mage":
+                            weakWarrior--;
+                            weakRogue++;
+                            break;
+                        case "Rogue":
+                            weakMage--;
+                            weakWarrior++;
+                            break;
+                    }
+                });
+                if (weakWarrior >= 2) {
+                    strWeak = strWeak + "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" +
+                        "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                        "<span aria-hidden=\"true\">&times;</span>" +
+                        "</button>" +
+                        "<strong>Beware ! </strong>" + weak + "warriors</div>";
+                }
+                if (weakMage >= 2) {
+                    strWeak = strWeak + "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" +
+                        "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                        "<span aria-hidden=\"true\">&times;</span>" +
+                        "</button>" +
+                        "<strong>Beware ! </strong>" + weak + "mages</div>";
+                }
+                if (weakRogue >= 2) {
+                    strWeak = strWeak + "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">" +
+                        "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                        "<span aria-hidden=\"true\">&times;</span>" +
+                        "</button>" +
+                        "<strong>Beware ! </strong>" + weak + "rogues</div>";
+                }
+                $("#alert").html(strWeak);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Start making your 4 members team</h1>
+        <form>
+            <div class="form-group">
+                <select class="form-control" id="mate1">
+                    <option>Warrior</option>
+                    <option>Rogue</option>
+                    <option>Mage</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="mate2">
+                    <option>Warrior</option>
+                    <option>Rogue</option>
+                    <option>Mage</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="mate3">
+                    <option>Warrior</option>
+                    <option>Rogue</option>
+                    <option>Mage</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="mate4">
+                    <option>Warrior</option>
+                    <option>Rogue</option>
+                    <option>Mage</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+        </form>
+        <div id="alert">
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

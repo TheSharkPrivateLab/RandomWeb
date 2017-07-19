@@ -2,18 +2,18 @@ function Player() {
     this.x = 0;
     this.y = 0;
     this.map = [
-        ["w", "w", "w", "w", "w", "w", "w", "w"],
-        ["w", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "w"],
-        ["w", "&nbsp;", "w", "w", "w", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "w", "p", "w", "w", "&nbsp;", "w"],
-        ["win", "&nbsp;", "w", "&nbsp;", "w", "w", "&nbsp;", "w"],
-        ["w", "w", "w", "&nbsp;", "w", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "&nbsp;", "&nbsp;", "w", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "w", "&nbsp;", "w", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "w", "&nbsp;", "&nbsp;", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "w", "w", "w", "w", "&nbsp;", "w"],
-        ["w", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "w"],
-        ["w", "w", "w", "w", "w", "w", "w", "w"],
+        ["wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall"],
+        ["wall", "path", "path", "path", "path", "path", "path", "wall"],
+        ["wall", "path", "wall", "wall", "wall", "wall", "path", "wall"],
+        ["wall", "path", "wall", "play", "wall", "wall", "path", "wall"],
+        ["winn", "path", "wall", "path", "wall", "wall", "path", "wall"],
+        ["wall", "wall", "wall", "path", "wall", "wall", "path", "wall"],
+        ["wall", "path", "path", "path", "wall", "wall", "path", "wall"],
+        ["wall", "path", "wall", "path", "wall", "wall", "path", "wall"],
+        ["wall", "path", "wall", "trap", "path", "wall", "path", "wall"],
+        ["wall", "path", "wall", "wall", "wall", "wall", "path", "wall"],
+        ["wall", "path", "path", "path", "path", "swor", "path", "wall"],
+        ["wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall"],
     ];
 
     return this;
@@ -29,16 +29,24 @@ function init(player) {
     $("body").html("<p>ZQSD POUR BOUGER</p>");
     player.map.forEach(function (line) {
         line.forEach(function (column) {
-            if (column === "w")
+            if (column === "wall")
                 $("body").html($("body").html() + "<div class=\"span full\">" + "&nbsp" + "</div>");
-            else if (column === "p") {
+            else if (column === "play") {
                 $("body").html($("body").html() + "<div class=\"span char\">" + "&nbsp" + "</div>");
                 player.x = x;
                 player.y = y;
             }
-            else if (column === "win") {
+            else if (column === "trap") {
+                $("body").html($("body").html() + "<div class=\"span trap\">" + "&nbsp" + "</div>");
+            }
+            else if (column === "swor") {
+                $("body").html($("body").html() + "<div class=\"span sword\">" + "&nbsp" + "</div>");
+            }
+            else if (column === "winn") {
                 $("body").html($("body").html() + "<div class=\"span win\">" + "&nbsp" + "</div>");
             }
+            else if (column === "path")
+                $("body").html($("body").html() + "<div class=\"span\">" + "&nbsp" + "</div>");
             else
                 $("body").html($("body").html() + "<div class=\"span\">" + column + "</div>");
             x++;
@@ -69,11 +77,11 @@ function mv(player, direction) {
         default:
             print("Error");
         }
-    if (player.map[y][x] === "w") {
+    if (player.map[y][x] === "wall" || player.map[y][x] === "swor" || player.map[y][x] === "trap") {
         x = player.x;
         y = player.y;
     }
-    if (player.map[y][x] === "win") {
+    if (player.map[y][x] === "winn") {
         display(player, x, y);
         $("body").html("<h1>VOUS AVEZ GAGNE</h1>");
         setTimeout(function () {
@@ -81,7 +89,7 @@ function mv(player, direction) {
         }, 2000);
     }
     else {
-        player.map[y][x] = "p";
+        player.map[y][x] = "play";
         display(player, x, y);
     }
 }
@@ -90,15 +98,24 @@ function display(player, x, y) {
     $("body").html("<p>ZQSD POUR BOUGER</p>");
     player.map.forEach(function (line) {
         line.forEach(function (column) {
-            if (column === "w")
+            if (column === "wall")
                 $("body").html($("body").html() + "<div class=\"span full\">" + "&nbsp;" + "</div>");
-            else if (column === "p") {
+            else if (column === "play") {
                 $("body").html($("body").html() + "<div class=\"span char\">" + "&nbsp;" + "</div>");
                 player.x = x;
                 player.y = y;
             }
-            else if (column === "win") {
+            else if (column === "winn") {
                 $("body").html($("body").html() + "<div class=\"span win\">" + "&nbsp" + "</div>");
+            }
+            else if (column === "swor") {
+                $("body").html($("body").html() + "<div class=\"span sword\">" + "&nbsp" + "</div>");
+            }
+            else if (column === "trap") {
+                $("body").html($("body").html() + "<div class=\"span trap\">" + "&nbsp" + "</div>");
+            }
+            else if (column === "path") {
+                $("body").html($("body").html() + "<div class=\"span\">" + "&nbsp" + "</div>");
             }
             else
                 $("body").html($("body").html() + "<div class=\"span\">" + column + "</div>");
