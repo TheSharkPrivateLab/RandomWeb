@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="HexagonTools.js"></script>
+    <script src="Grid.js"></script>
+    <script src="HexCalcs.js"></script>
+    <script>
+        $(document).ready(function () {
+            var canvas = $("#hexCanvas");
+            print(canvas);
+            var ctx = canvas.getContext('2d');
+            print(HT);
+            addHexToCanvasAndDraw(10, 10, ctx);
+        });
+    </script>
+</head>
+<body>
+    <canvas" id="hexCanvas"></canvas">
+</body>
+</html>
